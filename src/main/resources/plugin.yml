@@ -1,0 +1,4 @@
+name: LastLoginTime
+version: 1
+main: vendek.delastlogintime.LastLoginTime
+api-version: '1.20'
