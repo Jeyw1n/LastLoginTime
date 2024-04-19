@@ -41,7 +41,7 @@ public class LastLoginTime extends JavaPlugin implements Listener {
         // Сохраняем данные
         saveData(playerUID + ".join-date", joinDate);
 
-        player.sendMessage(ChatColor.YELLOW + "Добро пожаловать!\n" + "Последний вход был: " + ChatColor.GOLD + oldJoinDate);
+        player.sendMessage( player.getName() + ChatColor.YELLOW + ", добро пожаловать!\n" + "Последний вход был: " + ChatColor.GOLD + oldJoinDate);
         event.setJoinMessage(null);
     }
 }
