@@ -2,6 +2,8 @@ package vendek.delastlogintime;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -25,7 +27,7 @@ public class LastLoginTime extends JavaPlugin implements Listener {
         saveConfig();
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.NORMAL)
     private void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         // UID для сохранения
@@ -43,5 +45,11 @@ public class LastLoginTime extends JavaPlugin implements Listener {
 
         player.sendMessage( player.getName() + ChatColor.YELLOW + ", добро пожаловать!\n" + "Последний вход был: " + ChatColor.GOLD + oldJoinDate);
         event.setJoinMessage(null);
+    }
+
+    @EventHandler(priority = EventPriority.LOW)
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        // Отключаем сообщение о выходе игрока
+        event.setQuitMessage(null);
     }
 }
